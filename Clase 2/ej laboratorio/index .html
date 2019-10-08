@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		header{
+			height: 60px;
+			position: relative;
+		}
+		header button{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 16px;
+			z-index: 9;
+			border: none;
+			background: transparent;
+		}
+		#drawer{
+			width: 25%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: -30%;
+			box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		a{
+			color: black;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<nav id="drawer">
+		<a href="link1">link 1</a>
+		<a href="link2">link 2</a>
+		<a href="link3">link 3</a>
+	</nav>
+	<header>
+		<button class="material-icons">menu</button>
+	</header>
+	<button id="error">Click!</button>
+	<article>
+		
+	</article>
+	<script>
+	 
+
+		//  Asignarle un evento de click al boton hamburguesa 
+		//para que pueda ser capaz de abrir y cerrar el nav #drawer
+		
+		var btn = document.querySelector(".material-icons");
+		var nav = document.querySelector("#drawer");
+
+		btn.addEventListener('click', ()=>{
+			if(nav.style.left){
+				nav.style.left = '';
+			}else{
+				nav.style.left = "0";
+			}
+		})
+
+		// El objeto global window tiene un evento llamado resize. 
+		//Este evento se dispara cada vez que el navegador cambia de tamaño, 
+		//es decir, cuando se minimiza o maximiza. Asignarle un evento 
+		//que sea capaz de cambiarle el color de fonto al body por rojo 
+		//si estamos a mas de 600px y azul si estamos a menos.
+ 
+		window.addEventListener("resize", ()=>{
+			if(window.outerWidth > 600){
+				document.body.style.backgroundColor = "red";
+			}else{
+				document.body.style.backgroundColor = "blue";
+			}
+		})
+	 </script>
+</body>
+</html>

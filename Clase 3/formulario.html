@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        fieldset {
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        legend {
+            margin: auto;
+            padding: 0 1rem;
+        }
+
+        .group {
+            position: relative;
+            height: 30px;
+            margin: 2rem 0;
+        }
+
+        .group label {
+            z-index: 1;
+            background-color: white;
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .group label,
+        .group input,
+        .group textarea {
+            position: absolute;
+            width: 100%;
+            resize: none;
+            border: none;
+            bottom: 0;
+        }
+
+        .group::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            border-bottom: 2px solid black;
+            bottom: -5px;
+            transition: all 0.3s ease;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .group input:active,
+        .group input:focus,
+        .group textarea:active,
+        .group textarea:focus {
+            outline: none;
+        }
+
+        .animacionBorde::after {
+            width: 100%;
+        }
+
+        .subir {
+            top: -20px;
+            font-size: 14px;
+            color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Datos del Usuario</legend>
+            <div class="group">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" placeholder="Ej.: Juan">
+            </div>
+            <div class="group">
+                <label for="apellido">Apellido</label>
+                <input id="apellido" type="text" placeholder="Ej.: Gonzalez">
+            </div>
+            <div class="group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Ej.:mail@dominio.com">
+            </div>
+            <div class="group">
+                <label for="reemail">Repetir Email</label>
+                <input id="reemail" type="reemail" placeholder="Ej.:mail@dominio.com">
+            </div>
+            <div class="group">
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" placeholder="Ej.:MiPassword1243!">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos del mensaje</legend>
+            <div class="group">
+                <label for="titulo">Titulo</label>
+                <input id="titulo" type="text" placeholder="Titulo">
+            </div>
+            <div class="group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje"></textarea>
+            </div>
+        </fieldset>
+        <button>Comentar!</button>
+    </form>
+    <script>
+        let inputs = document.querySelectorAll("input,textarea")
+        inputs.forEach(function (input) {
+            input.addEventListener("focus", function (e) {
+                e.target.parentNode.children[0].classList.add("subir")
+                e.target.parentNode.classList.add("animacionBorde")
+            })
+
+            input.addEventListener("blur", function (e) {
+                if (e.target.value.length <= 0) {
+                    e.target.parentNode.children[0].classList.remove("subir")
+                }
+                e.target.parentNode.classList.add("animacionBorde")
+            })
+        })
+
+        let nombre = document.querySelector("#nombre");
+        let apellido = document.querySelector("#apellido").value;
+        let email = document.querySelector("#email").value;
+        let reemail = document.querySelector("#reemail").value;
+        let password = document.querySelector("#password").value;
+        let titulo = document.querySelector("#titulo").value;
+        let mensaje = document.querySelector("#mensaje").value;
+
+let cont=0;
+        nombre.addEventListener('blur', () => {
+            let valor = nombre.value;
+            if (valor.length == 2) {
+                return true;
+            } else {
+                alert("Completar nombre");
+            }
+        })
+//let regNombre = /\w+\s+\w+/; 
+
+        //Continuando con una extension del formulario de la clase pasada, esta vez ademas de animarlo vamos a intentar validarlo
+        //1)Asignarle un evento de blur a cada input del formulario de manera tal que se cumplan las siguientes validaciones sin usar expresiones regulares :
+            //1.1)nombre : El nombre debe ser de una o dos palabras como máximo, si se ingresaran más solo se agarrarán las dos primeras. Cada palabra debe ser de por lo menos dos letras como mínimo. Se deben escapar los espacios de adelante y atras de cada palabra.
+            //1.2)apellido : El apellido debe ser de una o dos palabras como máximo, si se ingresaran más solo se agarrarán las dos primeras. Cada palabra debe ser de por lo menos cuatro letras como mínimo. Se deben escapar los espacios de adelante y atras de cada palabra.
+            //1.3)email : El email debe respetar el formato nombre@dominio.com pudiendo contener el nombre caracteres especiales como -_.  
+            //1.4)reemail : Su valor debe ser identico al de email
+            //1.5)contraseña : La contraseña debe tener como mínimo 6 letras sin espacios y los caracteres especiales que se pueden usar son ?!_-.
+            //1.6)titulo : El titulo puede ser opcional. Si el mismo está faltante, se debe usar el string "Post Anonimo"
+            //1.7)mensaje : El mensaje debe tener como mínimo una letra. Puede ser cualquier caracter siempre y cuando el mismo no se imprima en pantalla sin ser escapado, de lo contrario podríamos tener un ataque XSS.
+        //2)Si no cumplieran con lo requerido, los mismos deberán mostrar un mensaje de error customizado utilizando la API de validación de HTML5 que le corresponda en cada caso. El elemento deberá además tener la clase error. 
+        //3)Si cumplieran con lo requerido deberán tener la clase success.
+        //4)Realizar las mismas operaciones pero esta vez dentro de un evento submit que deberá estar registrado en el formulario. 
+        //BONUS : 
+        //5)Realizar las mismas validaciones usando RegExp.
+    </script>
+</body>
+
+</html>

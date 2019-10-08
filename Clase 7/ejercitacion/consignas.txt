@@ -1,0 +1,19 @@
+1) Crear una página index.html que contenga un header con un título en h1 y una section 
+con el id “centro” y dales un poco de estilo (especialmente color de fondo). 
+Añadir un párrafo de texto dentro de la section #centro.
+
+2) Enlazar librería jquery.
+
+3) Crear archivo script.js y enlazarlo en index.html debajo del cdn de jquery.
+
+4)  Dentro de document .ready empieza a escribir el código
+
+5) En javascript detectar la altura de los diferentes elementos. Para ello
+tendrás que utilizar los selectores necesarios y la función .height de jQuery.
+
+6) En html coloca una imagen en el centro de la section #centro y asígnale el id #foto.
+
+7) Coloca encima de ella dos botones con el texto “ocultar” y “mostrar” y asigna a cada
+uno de ellos una id.
+
+8) En javascript utilizar el evento click en los botones para ocultar o mostrar la imagen.

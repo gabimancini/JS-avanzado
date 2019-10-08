@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Mi Pagina Web</h1>
+    </header>
+    <main>
+        <nav>
+            <a href="http://google.com">Google!</a>
+            <a href="http://educacionit.com">EducacionIT</a>
+        </nav>
+    </main>
+    <article id="movil">
+        <p>Esta navegando en un dispositivo móvil!</p>
+        <ul id="estatico">Lista estática</ul>
+    </article>
+    <article id="boton"><button>Click me</button></article>
+
+    <script>
+        //1)Crear una lista desordenada con 10 elementos dentro usando un bucle for. Tener en cuenta que solo se le puede hacer un único appendChild al ul creado, asi minimizamos el tiempo de modificaciones en el DOM.
+        var ul = document.createElement("ul");
+        var fragmento = document.createDocumentFragment();
+        for (var i = 1; i < 11; i++) {
+            var li = document.createElement("li");
+            li.innerText = "Item número " + i;
+            fragmento.appendChild(li);
+        }
+        ul.appendChild(fragmento);
+        document.body.appendChild(ul);
+
+        //2)Hacer que el <article> con id "movil" solamente se vea si la pagina de carga a menos de 500px.
+        var movil = document.querySelector("#movil");
+        if ((window.outerWidth) > 500) {
+            movil.style.display = "none";
+        }
+
+
+        //3)Realizar la misma operacion que en el punto uno, pero ahora para el <ul> que ya se encuentra en el <body>. Recordar que no se puede hacer multiples appendChild a un nodo.
+
+        //4)Intercambiar las URLs de los links de la barra de navegacion. El que dice Google! tiene que redirigir a educacionit.com y viceversa.
+            var a = document.querySelectorAll("a");
+            var link1 = a[0].href;
+            a[0].href= a[1].href;
+            a[1].href = link1;
+        //5)Cambiarle el color del fondo al <header> 
+        //por alguna tonalidad de azul oscuro y al
+        //<h1> por alguna tonalidad de blanco para 
+        //que contraste.
+        var header = document.querySelector("header");
+        var h1 = document.querySelector("h1");
+        header.style.backgroundColor = "darkblue";
+        h1.style.color = "white";
+
+
+    </script>
+</body>
+
+</html>

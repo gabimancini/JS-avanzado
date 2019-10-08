@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <title>Validación de Formularios</title>
+    <meta charset="utf-8" />
+    <style>
+        .warning {
+            color: #fff;
+            background-color: #ccc;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre">*<br>
+        <!-- Validar el input password siempre y cuando cumpla con:
+    * Requerido
+    * Mínimo de 8 caracteres y un máximo de 16.
+    * No puede tener espacios
+    * Avisar con anticipación al usuario.
+    * Enviar mensajes de error.
+    * Agregar que debe tener números, símbolos...
+-->
+        <label for="password">Password</label><br>
+        <input type="password" id="password" /><br>
+        <!--
+        <label for="num"> Número</label><br>
+        <input type="number" id="num" max="20" required/><br>
+
+        <label for="url">URL</label><br>
+     <input type="url" id="url"><br>
+   -->
+        <span class="mensaje"></span> <br>
+        <button> Enviar</button>
+    </form>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
